@@ -8,7 +8,8 @@ Plain HTML, CSS and JavaScript: nothing to install, no build step.
 ```
 index.html            All page content and sections
 assets/css/style.css  Styles (colors and fonts are variables at the top)
-assets/js/main.js     Menu, scroll animations, project filter, contact form
+assets/js/projects.js List of portfolio projects (edit this to add or remove sites)
+assets/js/main.js     Menu, scroll animations, project cards and filter, contact form
 ```
 
 ## Preview locally
@@ -20,7 +21,8 @@ Open `index.html` in a browser.
 Some content is placeholder text you should replace:
 
 - **Contact email:** set `CONTACT_EMAIL` at the top of `assets/js/main.js`. The contact form opens the visitor's email app addressed to it.
-- **Projects** (`#work` in `index.html`): replace the four sample projects with real work. Each card has a `data-cat` (`wordpress`, `react`, `php`) used by the filter buttons.
+- **Projects:** edit `assets/js/projects.js`. Each line is one website (name, URL, description, filter categories, tag).
+  Screenshots load automatically from the WordPress mShots service in the visitor's browser. The first visit to a new site can take a few seconds while the screenshot is generated, and a colored letter shows until then. To use your own image instead, put it in `assets/img/projects/` and add `image: "assets/img/projects/name.jpg"` to that project.
 - **Stats** (hero): change the `data-count` numbers.
 - **Skills** (`#skills`): edit the cards to add or remove technologies.
 - **Testimonials:** replace "Client Name" and the quotes with real client feedback.

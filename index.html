@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#0a0a0c" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23c6ff3d'/><text x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='30' fill='%230a0a0c'>RI</text></svg>" />
 </head>
@@ -63,7 +63,7 @@
           <div class="stat"><strong data-count="50">0</strong><span>+ Websites built</span></div>
           <div class="stat"><strong data-count="30">0</strong><span>+ Happy clients</span></div>
           <div class="stat"><strong data-count="3">0</strong><span>+ Years experience</span></div>
-          <div class="stat"><strong data-count="8">0</strong><span>Core technologies</span></div>
+          <div class="stat"><strong data-count="5">0</strong><span>Countries served</span></div>
         </div>
       </div>
     </section>
@@ -83,100 +83,27 @@
     <!-- ============ WORK ============ -->
     <section class="section" id="work">
       <div class="container">
-        <div class="section__head reveal">
-          <p class="eyebrow">Selected work</p>
-          <h2 class="section__title">Recent projects I've<br />built</h2>
+        <div class="section__head section__head--split reveal">
+          <div>
+            <p class="eyebrow">Selected work</p>
+            <h2 class="section__title">Websites I've<br />built</h2>
+          </div>
+          <p class="section__lead">Live websites for clients in Bangladesh, the UK, Austria, France and the USA. Click any project to visit the site.</p>
         </div>
 
         <div class="filters reveal" role="tablist" aria-label="Filter projects">
           <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="filter" data-filter="wordpress" role="tab" aria-selected="false">WordPress</button>
-          <button class="filter" data-filter="react" role="tab" aria-selected="false">React / Next.js</button>
-          <button class="filter" data-filter="php" role="tab" aria-selected="false">PHP</button>
+          <button class="filter" data-filter="business" role="tab" aria-selected="false">Business</button>
+          <button class="filter" data-filter="ecommerce" role="tab" aria-selected="false">E-commerce</button>
+          <button class="filter" data-filter="content" role="tab" aria-selected="false">Blog & Education</button>
+          <button class="filter" data-filter="intl" role="tab" aria-selected="false">International</button>
         </div>
 
-        <div class="work-grid">
-          <!-- Project 1 -->
-          <article class="project reveal" data-cat="wordpress">
-            <div class="project__visual v-blue">
-              <div class="mock-web">
-                <div class="mock-web__bar"><i></i><i></i><i></i></div>
-                <div class="mock-web__hero"><b></b><b class="short"></b><span></span></div>
-                <div class="mock-web__cards"><i></i><i></i><i></i></div>
-              </div>
-            </div>
-            <div class="project__meta">
-              <div>
-                <h3>ShopBD — WooCommerce Store</h3>
-                <p>Online store with custom theme, payment gateway and fast product search.</p>
-              </div>
-              <ul class="tags"><li>WordPress</li><li>WooCommerce</li></ul>
-            </div>
-          </article>
+        <!-- Projects are listed in assets/js/projects.js -->
+        <div class="sites" id="projectGrid"></div>
 
-          <!-- Project 2 -->
-          <article class="project reveal" data-cat="react">
-            <div class="project__visual v-violet">
-              <div class="mock-dash">
-                <div class="mock-dash__side"><i></i><i></i><i></i><i></i></div>
-                <div class="mock-dash__main">
-                  <div class="mock-row"><b></b><b></b><b></b></div>
-                  <div class="mock-chart">
-                    <span style="--h:40%"></span><span style="--h:65%"></span><span style="--h:50%"></span>
-                    <span style="--h:85%"></span><span style="--h:60%"></span><span style="--h:95%"></span><span style="--h:70%"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="project__meta">
-              <div>
-                <h3>Statly — Analytics Dashboard</h3>
-                <p>React dashboard with live charts, filters and a clean Tailwind UI.</p>
-              </div>
-              <ul class="tags"><li>React.js</li><li>Tailwind</li></ul>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article class="project reveal" data-cat="react">
-            <div class="project__visual v-lime">
-              <div class="mock-web mock-web--dark">
-                <div class="mock-web__bar"><i></i><i></i><i></i></div>
-                <div class="mock-web__hero mock-web__hero--center"><b></b><b class="short"></b><span></span></div>
-                <div class="mock-web__cards"><i></i><i></i><i></i></div>
-              </div>
-            </div>
-            <div class="project__meta">
-              <div>
-                <h3>LaunchKit — SaaS Landing Page</h3>
-                <p>Next.js marketing site with SEO, blog and a 95+ Lighthouse score.</p>
-              </div>
-              <ul class="tags"><li>Next.js</li><li>SEO</li></ul>
-            </div>
-          </article>
-
-          <!-- Project 4 -->
-          <article class="project reveal" data-cat="php">
-            <div class="project__visual v-orange">
-              <div class="mock-code" aria-hidden="true">
-                <div class="mock-code__bar"><i></i><i></i><i></i><span>booking.php</span></div>
-<pre><span class="c-k">&lt;?php</span>
-<span class="c-k">function</span> <span class="c-f">createBooking</span>(<span class="c-v">$data</span>) {
-  <span class="c-v">$stmt</span> = <span class="c-v">$db</span>-&gt;<span class="c-f">prepare</span>(
-    <span class="c-s">"INSERT INTO bookings ..."</span>
-  );
-  <span class="c-k">return</span> <span class="c-v">$stmt</span>-&gt;<span class="c-f">execute</span>(<span class="c-v">$data</span>);
-}</pre>
-              </div>
-            </div>
-            <div class="project__meta">
-              <div>
-                <h3>Clinicare — Booking System</h3>
-                <p>Custom PHP & MySQL appointment system with an admin panel.</p>
-              </div>
-              <ul class="tags"><li>PHP</li><li>MySQL</li></ul>
-            </div>
-          </article>
+        <div class="sites__more">
+          <button class="btn btn--ghost" id="showMore" hidden>View all projects <span aria-hidden="true">↓</span></button>
         </div>
       </div>
     </section>
@@ -433,6 +360,7 @@
     </div>
   </footer>
 
+  <script src="assets/js/projects.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
