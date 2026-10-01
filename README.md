@@ -28,7 +28,7 @@ Some content is placeholder text you should replace:
 - **Stats** (hero): change the `data-count` numbers.
 - **Skills** (`#skills`): edit the cards to add or remove technologies.
 - **Testimonials:** replace "Client Name" and the quotes with real client feedback.
-- **About:** to use a real photo, replace the `<div class="avatar">…</div>` block with `<img class="avatar" src="assets/img/photo.jpg" alt="Rakibul Islam">`.
+- **About photo:** `assets/img/rakibul-islam.webp` (transparent background). Replace that file to change the photo.
 - **Colors:** change `--accent` and `--violet` in `:root` at the top of `style.css`.
 
 ## Publish with GitHub Pages

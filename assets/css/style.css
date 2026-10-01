@@ -416,7 +416,17 @@ p { margin: 0; }
   display: grid; place-items: center;
   overflow: hidden;
 }
-.avatar span { font-family: var(--font-head); font-size: clamp(90px, 14vw, 160px); font-weight: 800; letter-spacing: -0.06em; color: rgba(255, 255, 255, 0.92); }
+.avatar { position: relative; }
+.avatar__photo {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 94%;
+  width: auto;
+  max-width: none;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.45));
+}
 .badge {
   position: absolute;
   padding: 12px 18px;
@@ -615,7 +625,7 @@ p { margin: 0; }
   .skill { flex-direction: column; align-items: flex-start; padding: 18px; gap: 12px; }
   .form__row { grid-template-columns: 1fr; }
   .sites { grid-template-columns: 1fr; }
-  .badge--a { right: 8px; }
+  .badge--a { right: 8px; top: 46%; }
   .badge--b { left: 8px; }
   .service, .quote { padding: 26px; }
   .cta { padding: 44px 18px; }
