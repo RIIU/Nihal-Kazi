@@ -12,6 +12,7 @@ assets/js/projects.js List of portfolio projects (edit this to add or remove sit
 assets/js/main.js     Menu, scroll animations, project cards and filter, contact form
 assets/img/projects/  Website screenshots for the project cards
 scripts/screenshot.mjs  Takes those screenshots (run by GitHub Actions)
+assets/img/brand/     Logo files (SVG + PNG) and app icons
 ```
 
 ## Preview locally
@@ -29,6 +30,13 @@ Some content is placeholder text you should replace:
 - **Skills** (`#skills`): edit the cards to add or remove technologies. The logos are inline SVGs from [Simple Icons](https://simpleicons.org/) (CC0). To add one, copy the `path` from that icon's SVG and set the card's `--c` colour.
 - **Testimonials:** replace "Client Name" and the quotes with real client feedback.
 - **About photo:** `assets/img/rakibul-islam.webp` (transparent background). Replace that file to change the photo.
+- **Logo:** the "Ri" mark and wordmark live in `assets/img/brand/`:
+  - `logo-mark.svg` / `logo-mark-512.png`: the square icon, also used as the favicon
+  - `logo-dark.svg` / `logo-dark.png`: icon plus name, for dark backgrounds
+  - `logo-light.svg` / `logo-light.png`: icon plus name, for light backgrounds
+  - `apple-touch-icon.png`: the icon iPhones use when the site is added to the home screen
+
+  The nav and footer use an inline, animated copy of the mark in `index.html`.
 - **Colors:** change `--accent` and `--violet` in `:root` at the top of `style.css`.
 
 ## Publish with GitHub Pages
