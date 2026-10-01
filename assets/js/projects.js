@@ -4,9 +4,9 @@
 // To add a project, copy one line and change the values.
 //   cats:  any of "business", "ecommerce", "content", "intl"
 //          (they match the filter buttons on the page)
-//   image: optional. Path to your own screenshot, e.g.
-//          "assets/img/projects/piximdesign.jpg". Without it, a live
-//          screenshot of the site is loaded automatically.
+//   image: optional. Path to your own screenshot. Without it, the page uses
+//          assets/img/projects/<domain>.jpg (e.g. piximdesign-com.jpg), which
+//          the "Project screenshots" GitHub Action creates automatically.
 // ---------------------------------------------------------
 const PROJECTS = [
   { name: "PiXim Design", url: "https://piximdesign.com/", desc: "Website for a branding and design agency, showing its services, portfolio and packages.", cats: ["business"], tag: "Agency" },

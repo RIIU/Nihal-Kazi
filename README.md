@@ -10,6 +10,8 @@ index.html            All page content and sections
 assets/css/style.css  Styles (colors and fonts are variables at the top)
 assets/js/projects.js List of portfolio projects (edit this to add or remove sites)
 assets/js/main.js     Menu, scroll animations, project cards and filter, contact form
+assets/img/projects/  Website screenshots for the project cards
+scripts/screenshot.mjs  Takes those screenshots (run by GitHub Actions)
 ```
 
 ## Preview locally
@@ -22,7 +24,7 @@ Some content is placeholder text you should replace:
 
 - **Contact email:** set `CONTACT_EMAIL` at the top of `assets/js/main.js`. The contact form opens the visitor's email app addressed to it.
 - **Projects:** edit `assets/js/projects.js`. Each line is one website (name, URL, description, filter categories, tag).
-  Screenshots load automatically from the WordPress mShots service in the visitor's browser. The first visit to a new site can take a few seconds while the screenshot is generated, and a colored letter shows until then. To use your own image instead, put it in `assets/img/projects/` and add `image: "assets/img/projects/name.jpg"` to that project.
+  Screenshots live in `assets/img/projects/<domain>.jpg` (for example `piximdesign-com.jpg`). The **Project screenshots** GitHub Action (`.github/workflows/screenshots.yml`) creates them automatically whenever `projects.js` changes, taking a picture only of sites that don't have one yet. To retake all of them, open **Actions → Project screenshots → Run workflow** and tick "Retake every screenshot". If an image is missing, the page falls back to a live screenshot from WordPress mShots. To use your own picture for a site, add `image: "assets/img/projects/name.jpg"` to that project.
 - **Stats** (hero): change the `data-count` numbers.
 - **Skills** (`#skills`): edit the cards to add or remove technologies.
 - **Testimonials:** replace "Client Name" and the quotes with real client feedback.
