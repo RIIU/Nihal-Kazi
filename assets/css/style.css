@@ -440,62 +440,21 @@ p { margin: 0; }
 .ai-speed .needle { transform-origin: 32px 44px; animation: ai-needle 2.8s cubic-bezier(0.5, 0, 0.2, 1.4) infinite; }
 @keyframes ai-needle { 0%, 100% { transform: rotate(-62deg); } 45%, 70% { transform: rotate(58deg); } }
 
-/* ---------- Animated skill icons ---------- */
-.skill__badge .anim-icon { width: 36px; height: 36px; stroke-width: 3.2; }
-.anim-icon .redraw, .anim-icon .trend, .anim-icon .slash { stroke-dasharray: 1; }
-
-.sk-wp .redraw { animation: sk-redraw 4.5s ease-in-out infinite; }
-.sk-next .redraw { animation: sk-redraw 4.5s ease-in-out infinite; }
-.sk-next .r2 { animation-delay: 0.35s; }
-@keyframes sk-redraw { 0% { stroke-dashoffset: 1; } 40%, 78% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1; } }
-
-.sk-el .row { transform-box: fill-box; transform-origin: 0 50%; animation: sk-row 3.2s var(--ease) infinite; }
-.sk-el .r2 { animation-delay: 0.2s; }
-.sk-el .r3 { animation-delay: 0.4s; }
-@keyframes sk-row { 0%, 100% { transform: scaleX(0.15); } 35%, 75% { transform: scaleX(1); } }
-
-.sk-woo .bag { animation: sk-bob 2.6s ease-in-out infinite; }
-.sk-woo .handle { transform-box: fill-box; transform-origin: 50% 100%; animation: sk-swing 2.6s ease-in-out infinite; }
-.sk-woo .spark { fill: currentColor; stroke: none; transform-box: fill-box; transform-origin: center; animation: ai-twinkle 2.6s ease-in-out infinite; }
-@keyframes sk-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-@keyframes sk-swing { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
-
-.sk-seo .mag { animation: ai-scan 3.2s ease-in-out infinite; }
-.sk-seo .trend { animation: sk-redraw 3.2s ease-in-out infinite; }
-
-.sk-n8n .flow { stroke-dasharray: 3 5; animation: ai-flow 0.9s linear infinite; }
-.sk-n8n .node { fill: currentColor; fill-opacity: 0.2; animation: ai-node 2.4s ease-in-out infinite; }
-.sk-n8n .n2 { animation-delay: 0.5s; }
-.sk-n8n .n3 { animation-delay: 1s; }
-.sk-n8n .n4 { animation-delay: 1.2s; }
-
-.sk-react .orbit { transform-origin: 32px 32px; animation: ai-spin 9s linear infinite; }
-.sk-react .core { fill: currentColor; stroke: none; transform-box: fill-box; transform-origin: center; animation: ai-pulse 1.8s ease-in-out infinite; }
-
-.skill__badge .sk-tw { overflow: hidden; }
-.sk-tw .wave { animation: sk-wave 2.4s linear infinite; }
-.sk-tw .w2 { animation-duration: 3.2s; opacity: 0.6; }
-@keyframes sk-wave { to { transform: translateX(-32px); } }
-
-.sk-js .caret { animation: sk-blink 1s steps(1) infinite; }
-.sk-js .bl { animation: sk-left 2.4s ease-in-out infinite; }
-.sk-js .br { animation: sk-right 2.4s ease-in-out infinite; }
-@keyframes sk-blink { 50% { opacity: 0; } }
-@keyframes sk-left { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3px); } }
-@keyframes sk-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
-
-.sk-html .cl { animation: sk-left 2.2s ease-in-out infinite; }
-.sk-html .cr { animation: sk-right 2.2s ease-in-out infinite; }
-.sk-html .slash { animation: sk-redraw 4.4s ease-in-out infinite; }
-
-.sk-css .layer { fill: currentColor; fill-opacity: 0.12; animation: sk-layer 3s var(--ease) infinite; }
-.sk-css .l2 { animation-delay: 0.15s; }
-.sk-css .l3 { animation-delay: 0.3s; }
-@keyframes sk-layer { 0%, 100% { transform: translate(0, 0); } 40%, 60% { transform: translate(3px, -3px); fill-opacity: 0.35; } }
-
-.sk-php .led { fill: currentColor; stroke: none; animation: sk-led 1.6s steps(1) infinite; }
-.sk-php .e2 { animation-delay: 0.8s; }
-@keyframes sk-led { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+/* ---------- Skill brand logos ---------- */
+.brand-icon {
+  width: 30px; height: 30px;
+  fill: currentColor;
+  opacity: 0;
+  transform: scale(0.3) rotate(-25deg);
+  transition: opacity 0.6s var(--ease), transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: var(--d, 0s);
+}
+.is-visible .brand-icon { opacity: 1; transform: none; }
+.brand-icon path { transform-box: fill-box; transform-origin: center; animation: bi-float 3.4s ease-in-out infinite; animation-delay: var(--d, 0s); }
+.bi-react path { animation: ai-spin 10s linear infinite; }
+.skill:hover .brand-icon path { animation: bi-wiggle 0.7s var(--ease); }
+@keyframes bi-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes bi-wiggle { 0%, 100% { transform: rotate(0) scale(1); } 30% { transform: rotate(-12deg) scale(1.12); } 60% { transform: rotate(8deg) scale(1.05); } }
 
 /* ---------- Small animated icons (badges, contact, arrows) ---------- */
 .mini-icon { width: 17px; height: 17px; vertical-align: -3px; margin-right: 6px; overflow: visible; }
@@ -859,5 +818,6 @@ p { margin: 0; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
   .ai-build .blk, .ai-cart .item { opacity: 1; }
+  .brand-icon { opacity: 1; transform: none; }
   .anim-icon .draw { stroke-dashoffset: 0; }
 }

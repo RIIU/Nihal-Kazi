@@ -26,7 +26,7 @@ Some content is placeholder text you should replace:
 - **Projects:** edit `assets/js/projects.js`. Each line is one website (name, URL, description, filter categories, tag).
   Screenshots live in `assets/img/projects/<domain>.jpg` (for example `piximdesign-com.jpg`). The **Project screenshots** GitHub Action (`.github/workflows/screenshots.yml`) creates them automatically whenever `projects.js` changes, taking a picture only of sites that don't have one yet. To retake all of them, open **Actions → Project screenshots → Run workflow** and tick "Retake every screenshot". If an image is missing, the page falls back to a live screenshot from WordPress mShots. To use your own picture for a site, add `image: "assets/img/projects/name.jpg"` to that project.
 - **Stats** (hero): change the `data-count` numbers.
-- **Skills** (`#skills`): edit the cards to add or remove technologies.
+- **Skills** (`#skills`): edit the cards to add or remove technologies. The logos are inline SVGs from [Simple Icons](https://simpleicons.org/) (CC0). To add one, copy the `path` from that icon's SVG and set the card's `--c` colour.
 - **Testimonials:** replace "Client Name" and the quotes with real client feedback.
 - **About photo:** `assets/img/rakibul-islam.webp` (transparent background). Replace that file to change the photo.
 - **Colors:** change `--accent` and `--violet` in `:root` at the top of `style.css`.
