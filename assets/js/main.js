@@ -1,7 +1,5 @@
-// ---------------------------------------------------------
-// Settings — change this to your real email address
-// ---------------------------------------------------------
-const CONTACT_EMAIL = "your-email@example.com";
+// Where the contact form sends messages
+const CONTACT_EMAIL = "rakibulislamiu.me@gmail.com";
 
 // Year in footer
 document.getElementById("year").textContent = new Date().getFullYear();

@@ -22,14 +22,13 @@ Open `index.html` in a browser.
 
 Some content is placeholder text you should replace:
 
-- **Contact email:** set `CONTACT_EMAIL` at the top of `assets/js/main.js`. The contact form opens the visitor's email app addressed to it.
+- **Contact email:** `CONTACT_EMAIL` at the top of `assets/js/main.js`. The contact form opens the visitor's email app addressed to it. The email and social links also appear in the contact section and footer of `index.html`.
 - **Projects:** edit `assets/js/projects.js`. Each line is one website (name, URL, description, filter categories, tag).
   Screenshots live in `assets/img/projects/<domain>.jpg` (for example `piximdesign-com.jpg`). The **Project screenshots** GitHub Action (`.github/workflows/screenshots.yml`) creates them automatically whenever `projects.js` changes, taking a picture only of sites that don't have one yet. To retake all of them, open **Actions → Project screenshots → Run workflow** and tick "Retake every screenshot". If an image is missing, the page falls back to a live screenshot from WordPress mShots. To use your own picture for a site, add `image: "assets/img/projects/name.jpg"` to that project.
 - **Stats** (hero): change the `data-count` numbers.
 - **Skills** (`#skills`): edit the cards to add or remove technologies.
 - **Testimonials:** replace "Client Name" and the quotes with real client feedback.
 - **About:** to use a real photo, replace the `<div class="avatar">…</div>` block with `<img class="avatar" src="assets/img/photo.jpg" alt="Rakibul Islam">`.
-- **Social links** in the footer: replace the `#` links for LinkedIn, Facebook and Fiverr.
 - **Colors:** change `--accent` and `--violet` in `:root` at the top of `style.css`.
 
 ## Publish with GitHub Pages
