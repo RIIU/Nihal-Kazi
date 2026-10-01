@@ -34,7 +34,7 @@ const shotUrl = (url, attempt) =>
 const loadShot = (img, url) => {
   let attempt = 0;
   img.addEventListener("load", () => {
-    if (img.naturalWidth >= SHOT_WIDTH * 0.9 || img.dataset.local) {
+    if (img.naturalWidth >= SHOT_WIDTH * 0.9) {
       img.classList.add("is-loaded");
     } else if (attempt < 5) {
       attempt += 1;
@@ -46,6 +46,8 @@ const loadShot = (img, url) => {
 
 const grid = document.getElementById("projectGrid");
 const hostOf = (url) => new URL(url).hostname.replace(/^www\./, "");
+// Must match slugOf() in scripts/screenshot.mjs
+const slugOf = (url) => hostOf(url).replace(/\./g, "-");
 const esc = (str) => String(str).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const hues = [265, 150, 200, 25, 330, 85, 190, 290];
 
@@ -73,14 +75,16 @@ PROJECTS.forEach((p, i) => {
       <p>${esc(p.desc)}</p>
       <span class="site-card__visit">Visit website <span aria-hidden="true">↗</span></span>
     </div>`;
+  // Use the screenshot saved in the repo; fall back to a live one if it's missing.
   const img = card.querySelector("img");
-  if (p.image) {
-    img.dataset.local = "1";
-    img.addEventListener("load", () => img.classList.add("is-loaded"));
-    img.src = p.image;
-  } else {
+  img.dataset.local = "1";
+  img.addEventListener("load", () => img.dataset.local && img.classList.add("is-loaded"));
+  img.addEventListener("error", () => {
+    if (!img.dataset.local) return;
+    delete img.dataset.local;
     loadShot(img, p.url);
-  }
+  });
+  img.src = p.image || `assets/img/projects/${slugOf(p.url)}.jpg`;
   grid.appendChild(card);
 });
 
