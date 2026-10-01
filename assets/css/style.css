@@ -512,6 +512,22 @@ p { margin: 0; }
 .cta__title { font-size: clamp(36px, 6vw, 72px); font-weight: 800; letter-spacing: -0.04em; }
 .cta__sub { margin-top: 16px; font-size: 18px; opacity: 0.75; }
 
+.cta__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.cta__link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(10, 10, 12, 0.08);
+  border: 1px solid rgba(10, 10, 12, 0.15);
+  font-weight: 600;
+  font-size: 14px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  transition: background 0.2s, color 0.2s;
+}
+.cta__link:hover { background: var(--accent-ink); color: var(--accent); }
+.cta__link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
 .form { max-width: 640px; margin: 44px auto 0; display: grid; gap: 16px; text-align: left; }
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form label { display: grid; gap: 8px; }
@@ -602,6 +618,8 @@ p { margin: 0; }
   .badge--a { right: 8px; }
   .badge--b { left: 8px; }
   .service, .quote { padding: 26px; }
+  .cta { padding: 44px 18px; }
+  .cta__link { font-size: 13px; padding: 9px 14px; }
   .hero__actions .btn { flex: 1; justify-content: center; }
 }
 
