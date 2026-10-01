@@ -1,8 +1,7 @@
 # Nihal-Kazi
-Nihal Kazi's portfolio
-
-A single-page portfolio website for a product / UI-UX designer, in the style of a modern design agency site.
-It's plain HTML, CSS and JavaScript. Nothing to install, no build step.
+Portfolio website for **Rakibul Islam**, web developer (WordPress, React.js, Next.js, HTML, CSS, JavaScript, Tailwind CSS, PHP).
+It's a single page in the style of a modern design agency site.
+Plain HTML, CSS and JavaScript: nothing to install, no build step.
 
 ## Structure
 
@@ -21,11 +20,12 @@ Open `index.html` in a browser.
 Some content is placeholder text you should replace:
 
 - **Contact email:** set `CONTACT_EMAIL` at the top of `assets/js/main.js`. The contact form opens the visitor's email app addressed to it.
-- **Projects** (`#work` in `index.html`): replace the four sample projects with real work. Each card has a `data-cat` (`saas`, `mobile`, `brand`) used by the filter buttons.
+- **Projects** (`#work` in `index.html`): replace the four sample projects with real work. Each card has a `data-cat` (`wordpress`, `react`, `php`) used by the filter buttons.
 - **Stats** (hero): change the `data-count` numbers.
+- **Skills** (`#skills`): edit the cards to add or remove technologies.
 - **Testimonials:** replace "Client Name" and the quotes with real client feedback.
-- **About:** to use a real photo, replace the `<div class="avatar">…</div>` block with `<img class="avatar" src="assets/img/photo.jpg" alt="Nihal Kazi">`.
-- **Social links** in the footer: replace the `#` links for Behance, Dribbble and LinkedIn.
+- **About:** to use a real photo, replace the `<div class="avatar">…</div>` block with `<img class="avatar" src="assets/img/photo.jpg" alt="Rakibul Islam">`.
+- **Social links** in the footer: replace the `#` links for LinkedIn, Facebook and Fiverr.
 - **Colors:** change `--accent` and `--violet` in `:root` at the top of `style.css`.
 
 ## Publish with GitHub Pages

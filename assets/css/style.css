@@ -1,5 +1,5 @@
 /* =========================================================
-   Nihal Kazi — Portfolio
+   Rakibul Islam — Portfolio
    ========================================================= */
 
 :root {
@@ -366,6 +366,38 @@ p { margin: 0; }
 .mock-web__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 18px 18px; flex: 1; }
 .mock-web__cards i { border-radius: 10px; background: #f1f6fc; border: 1px solid #e2ebf5; }
 
+.mock-web--dark { background: #0f1205; }
+.mock-web--dark .mock-web__bar { background: #1b2009; }
+.mock-web--dark .mock-web__bar i { background: #3a4416; }
+.mock-web__hero--center { align-items: center; }
+.mock-web--dark .mock-web__hero b { background: #c6ff3d; }
+.mock-web--dark .mock-web__hero b.short { background: #3a4416; }
+.mock-web--dark .mock-web__hero span { background: #fff; }
+.mock-web--dark .mock-web__cards i { background: #1b2009; border-color: #2a3210; }
+
+.mock-code {
+  width: 82%;
+  background: #1a1410;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+.mock-code__bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #241b15; }
+.mock-code__bar i { width: 9px; height: 9px; border-radius: 50%; background: #4a382b; }
+.mock-code__bar span { margin-left: 8px; font: 500 12px "JetBrains Mono", monospace; color: #a08670; }
+.mock-code pre {
+  margin: 0;
+  padding: 18px 20px 22px;
+  font: 500 clamp(10px, 1.25vw, 14px)/1.7 "JetBrains Mono", ui-monospace, monospace;
+  color: #f1e6dc;
+  white-space: pre;
+  overflow: hidden;
+}
+.c-k { color: #ff9f5a; }
+.c-f { color: #ffd479; }
+.c-v { color: #8fd3ff; }
+.c-s { color: #b8f28b; }
+
 /* ---------- Services ---------- */
 .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .service {
@@ -389,6 +421,30 @@ p { margin: 0; }
 .service__icon svg { width: 26px; height: 26px; }
 .service h3 { font-size: 21px; font-weight: 600; margin-bottom: 12px; }
 .service p { color: var(--muted); font-size: 15px; }
+
+/* ---------- Skills ---------- */
+.skills { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.skill {
+  display: flex; align-items: center; gap: 16px;
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  transition: transform 0.4s var(--ease), border-color 0.4s;
+}
+.skill:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--c) 55%, transparent); }
+.skill__badge {
+  flex-shrink: 0;
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  font: 700 16px var(--font-head);
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+}
+.skill h3 { font-size: 17px; font-weight: 600; }
+.skill p { color: var(--muted); font-size: 13px; margin-top: 2px; }
 
 /* ---------- Process ---------- */
 .process { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: none; }
@@ -555,6 +611,7 @@ p { margin: 0; }
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .services, .testimonials { grid-template-columns: repeat(2, 1fr); }
+  .skills { grid-template-columns: repeat(2, 1fr); }
   .process { grid-template-columns: repeat(2, 1fr); }
   .about { gap: 50px; }
 }
@@ -590,6 +647,8 @@ p { margin: 0; }
 @media (max-width: 600px) {
   .container { padding: 0 16px; }
   .services, .testimonials, .process { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .skill { flex-direction: column; align-items: flex-start; padding: 18px; gap: 12px; }
   .form__row { grid-template-columns: 1fr; }
   .project__meta { flex-direction: column; }
   .tags { justify-content: flex-start; }
