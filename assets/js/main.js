@@ -147,7 +147,7 @@ filters.forEach((btn) =>
     applyFilter();
   })
 );
-showMore.innerHTML = `View all ${cards.length} projects <span aria-hidden="true">↓</span>`;
+showMore.innerHTML = `View all ${cards.length} projects <span class="arr-down" aria-hidden="true">↓</span>`;
 showMore.addEventListener("click", () => {
   expanded = true;
   applyFilter();
