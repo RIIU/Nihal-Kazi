@@ -24,6 +24,66 @@ toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open"
 document.querySelectorAll("#navLinks a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
 document.addEventListener("keydown", (e) => e.key === "Escape" && setMenu(false));
 
+// Project cards (data lives in projects.js)
+const SHOT_WIDTH = 1200;
+const shotUrl = (url, attempt) =>
+  `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=${SHOT_WIDTH}&h=900${attempt ? `&r=${attempt}` : ""}`;
+
+// The screenshot service returns a small "generating" placeholder the first
+// time a site is requested, so retry a few times until the real image arrives.
+const loadShot = (img, url) => {
+  let attempt = 0;
+  img.addEventListener("load", () => {
+    if (img.naturalWidth >= SHOT_WIDTH * 0.9 || img.dataset.local) {
+      img.classList.add("is-loaded");
+    } else if (attempt < 5) {
+      attempt += 1;
+      setTimeout(() => (img.src = shotUrl(url, attempt)), 2500 * attempt);
+    }
+  });
+  img.src = shotUrl(url, 0);
+};
+
+const grid = document.getElementById("projectGrid");
+const hostOf = (url) => new URL(url).hostname.replace(/^www\./, "");
+const esc = (str) => String(str).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+const hues = [265, 150, 200, 25, 330, 85, 190, 290];
+
+PROJECTS.forEach((p, i) => {
+  const card = document.createElement("a");
+  card.className = "site-card reveal";
+  card.href = p.url;
+  card.target = "_blank";
+  card.rel = "noopener";
+  card.dataset.cat = p.cats.join(" ");
+  card.style.setProperty("--hue", hues[i % hues.length]);
+  card.innerHTML = `
+    <div class="site-card__frame">
+      <div class="site-card__bar"><i></i><i></i><i></i><span>${esc(hostOf(p.url))}</span></div>
+      <div class="site-card__shot">
+        <span class="site-card__fallback" aria-hidden="true">${esc(p.name.charAt(0))}</span>
+        <img alt="Screenshot of the ${esc(p.name)} website" loading="lazy" />
+      </div>
+    </div>
+    <div class="site-card__meta">
+      <div class="site-card__top">
+        <h3>${esc(p.name)}</h3>
+        <span class="site-card__tag">${esc(p.tag)}</span>
+      </div>
+      <p>${esc(p.desc)}</p>
+      <span class="site-card__visit">Visit website <span aria-hidden="true">↗</span></span>
+    </div>`;
+  const img = card.querySelector("img");
+  if (p.image) {
+    img.dataset.local = "1";
+    img.addEventListener("load", () => img.classList.add("is-loaded"));
+    img.src = p.image;
+  } else {
+    loadShot(img, p.url);
+  }
+  grid.appendChild(card);
+});
+
 // Reveal on scroll + stat counters
 const animateCount = (el) => {
   const target = Number(el.dataset.count);
@@ -58,23 +118,39 @@ if ("IntersectionObserver" in window) {
   document.querySelectorAll("[data-count]").forEach((el) => (el.textContent = el.dataset.count));
 }
 
-// Project filters
+// Project filters + "View all"
+const INITIAL_COUNT = 9;
 const filters = document.querySelectorAll(".filter");
-const projects = document.querySelectorAll(".project");
+const cards = [...document.querySelectorAll(".site-card")];
+const showMore = document.getElementById("showMore");
+let activeFilter = "all";
+let expanded = false;
+
+const applyFilter = () => {
+  cards.forEach((card, i) => {
+    const match = activeFilter === "all" || card.dataset.cat.split(" ").includes(activeFilter);
+    const show = match && (expanded || activeFilter !== "all" || i < INITIAL_COUNT);
+    card.classList.toggle("is-hidden", !show);
+  });
+  showMore.hidden = expanded || activeFilter !== "all" || cards.length <= INITIAL_COUNT;
+};
+
 filters.forEach((btn) =>
   btn.addEventListener("click", () => {
     filters.forEach((b) => {
       b.classList.toggle("is-active", b === btn);
       b.setAttribute("aria-selected", String(b === btn));
     });
-    const f = btn.dataset.filter;
-    projects.forEach((p) => {
-      const show = f === "all" || p.dataset.cat === f;
-      p.classList.toggle("is-hidden", !show);
-      if (show) p.classList.add("is-visible");
-    });
+    activeFilter = btn.dataset.filter;
+    applyFilter();
   })
 );
+showMore.innerHTML = `View all ${cards.length} projects <span aria-hidden="true">↓</span>`;
+showMore.addEventListener("click", () => {
+  expanded = true;
+  applyFilter();
+});
+applyFilter();
 
 // Cursor glow
 const glow = document.querySelector(".cursor-glow");
