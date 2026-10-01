@@ -108,15 +108,19 @@ p { margin: 0; }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 
 .logo { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-head); font-weight: 700; font-size: 18px; }
-.logo__mark {
-  display: grid; place-items: center;
-  width: 36px; height: 36px;
-  border-radius: 10px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-size: 14px;
-  font-weight: 800;
-}
+.logo__mark { width: 38px; height: 38px; flex-shrink: 0; overflow: visible; transition: transform 0.5s var(--ease); }
+.logo:hover .logo__mark { transform: rotate(-8deg) scale(1.06); }
+.logo__r { fill: none; stroke: #0a0a0c; stroke-width: 4.4; stroke-linecap: round; stroke-linejoin: round; }
+.logo__r path { stroke-dasharray: 1; animation: logo-draw 1s var(--ease) both; }
+.logo__r path:nth-child(2) { animation-delay: 0.35s; }
+.logo__r path:nth-child(3) { animation-delay: 0.55s; }
+.logo__dot { fill: #0a0a0c; transform-box: fill-box; transform-origin: center; animation: logo-drop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s both; }
+.logo:hover .logo__dot { animation: logo-spin 0.8s var(--ease); }
+.logo__light { font-weight: 400; color: #c9c9cf; }
+.logo__end { color: var(--accent); }
+@keyframes logo-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes logo-drop { from { transform: translateY(-14px) rotate(-180deg); opacity: 0; } }
+@keyframes logo-spin { to { transform: rotate(360deg); } }
 
 .nav__links { display: flex; gap: 32px; }
 .nav__links a { color: var(--muted); font-size: 15px; font-weight: 500; transition: color 0.2s; }
