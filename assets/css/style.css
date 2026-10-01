@@ -359,18 +359,86 @@ p { margin: 0; }
 }
 .service:hover { transform: translateY(-6px); border-color: rgba(198, 255, 61, 0.35); background: var(--surface-2); }
 .service__icon {
-  width: 54px; height: 54px;
-  border-radius: 14px;
+  width: 76px; height: 76px;
+  border-radius: 20px;
   display: grid; place-items: center;
-  background: rgba(198, 255, 61, 0.1);
+  background: rgba(198, 255, 61, 0.08);
+  border: 1px solid rgba(198, 255, 61, 0.14);
   color: var(--accent);
   margin-bottom: 26px;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.3s, color 0.3s, transform 0.5s var(--ease);
 }
-.service:hover .service__icon { background: var(--accent); color: var(--accent-ink); }
-.service__icon svg { width: 26px; height: 26px; }
+.service:hover .service__icon { background: var(--accent); color: var(--accent-ink); transform: rotate(-4deg) scale(1.06); }
 .service h3 { font-size: 21px; font-weight: 600; margin-bottom: 12px; }
 .service p { color: var(--muted); font-size: 15px; }
+
+/* ---------- Animated service icons ---------- */
+.anim-icon {
+  width: 54px; height: 54px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.anim-icon .dot, .anim-icon .core { fill: currentColor; stroke: none; }
+.anim-icon .blk, .anim-icon .item, .anim-icon .bar, .anim-icon .node { fill: currentColor; fill-opacity: 0.22; }
+
+/* lines draw themselves when the card scrolls into view */
+.anim-icon .draw { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s var(--ease) 0.15s; }
+.is-visible .anim-icon .draw { stroke-dashoffset: 0; }
+
+/* WordPress & Elementor: blocks assemble */
+.ai-build .blk { opacity: 0; animation: ai-block 4.2s var(--ease) infinite; }
+.ai-build .b2 { animation-delay: 0.35s; }
+.ai-build .b3 { animation-delay: 0.7s; }
+@keyframes ai-block {
+  0%, 8% { opacity: 0; transform: translateY(7px); }
+  22%, 82% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: none; }
+}
+
+/* WooCommerce: items drop into the cart */
+.ai-cart .item { opacity: 0; animation: ai-drop 2.8s ease-in infinite; }
+.ai-cart .i2 { animation-delay: 0.45s; }
+.ai-cart .cart { animation: ai-bump 2.8s ease-out infinite; }
+@keyframes ai-drop {
+  0% { opacity: 0; transform: translateY(-16px); }
+  15% { opacity: 1; }
+  40%, 78% { opacity: 1; transform: translateY(5px); }
+  100% { opacity: 0; transform: translateY(5px); }
+}
+@keyframes ai-bump { 0%, 38%, 60%, 100% { transform: none; } 46% { transform: translateY(1.5px); } }
+
+/* SEO: bars grow while the magnifier scans */
+.ai-seo .bar { transform-box: fill-box; transform-origin: 50% 100%; animation: ai-grow 3s var(--ease) infinite; }
+.ai-seo .r2 { animation-delay: 0.2s; }
+.ai-seo .r3 { animation-delay: 0.4s; }
+.ai-seo .mag { animation: ai-scan 3s ease-in-out infinite; }
+@keyframes ai-grow { 0%, 100% { transform: scaleY(0.35); } 45%, 70% { transform: scaleY(1); } }
+@keyframes ai-scan { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-7px, 5px); } }
+
+/* AI & n8n: data flows between workflow nodes */
+.ai-flow .flow { stroke-dasharray: 3 5; animation: ai-flow 0.9s linear infinite; }
+.ai-flow .node { animation: ai-node 2.4s ease-in-out infinite; }
+.ai-flow .n2 { animation-delay: 0.6s; }
+.ai-flow .n3 { animation-delay: 1.2s; }
+.ai-flow .spark { fill: currentColor; stroke: none; transform-box: fill-box; transform-origin: center; animation: ai-twinkle 2.4s ease-in-out infinite; }
+@keyframes ai-flow { to { stroke-dashoffset: -16; } }
+@keyframes ai-node { 0%, 100% { fill-opacity: 0.15; } 40% { fill-opacity: 0.75; } }
+@keyframes ai-twinkle { 0%, 100% { transform: scale(0.6) rotate(0); opacity: 0.5; } 50% { transform: scale(1.1) rotate(90deg); opacity: 1; } }
+
+/* React & Next.js: atom spins */
+.ai-atom .orbit { transform-origin: 32px 32px; animation: ai-spin 9s linear infinite; }
+.ai-atom .core { transform-box: fill-box; transform-origin: center; animation: ai-pulse 1.8s ease-in-out infinite; }
+@keyframes ai-spin { to { transform: rotate(360deg); } }
+@keyframes ai-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+
+/* Speed & maintenance: needle swings up to full speed */
+.ai-speed .tick { opacity: 0.55; }
+.ai-speed .needle { transform-origin: 32px 44px; animation: ai-needle 2.8s cubic-bezier(0.5, 0, 0.2, 1.4) infinite; }
+@keyframes ai-needle { 0%, 100% { transform: rotate(-62deg); } 45%, 70% { transform: rotate(58deg); } }
 
 /* ---------- Skills ---------- */
 .skills { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -703,4 +771,6 @@ p { margin: 0; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
+  .ai-build .blk, .ai-cart .item { opacity: 1; }
+  .anim-icon .draw { stroke-dashoffset: 0; }
 }
